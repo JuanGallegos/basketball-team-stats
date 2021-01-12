@@ -60,7 +60,7 @@ def cal_average_height(players, team):
         if player['team'] == team:
             heights.append(int(player['height']))
 
-    return sum(heights)/len(heights)
+    return round(sum(heights)/len(heights), 2)
 
 
 def clean_data(players):
@@ -98,11 +98,9 @@ def balance_teams(players, teams):
         inexperience_list, len(inexperience_list)))
 
     for l_index, reference in enumerate(players_list):
-        # print(l_index, reference, players_list[l_index])
         for index, player in enumerate(players):
             if player['name'] == reference:
                 player['team'] = team_assignment[l_index]
-                # print(players[index])
                 break
             else:
                 continue
