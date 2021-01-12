@@ -4,6 +4,7 @@ import random
 
 
 def print_team_players(players, team):
+    """Prints team players."""
     roster = []
     for index, player in enumerate(players):
         if player['team'] == team:
@@ -13,6 +14,8 @@ def print_team_players(players, team):
 
 
 def print_player_gaurdians(players, team):
+    """Prints guardians and removes the " and " between names in the case that
+    there are more than one guardian."""
     gaurdians = []
     for index, player in enumerate(players):
         if player['team'] == team:
@@ -22,6 +25,7 @@ def print_player_gaurdians(players, team):
 
 
 def count_team_players(players, team):
+    """Counts players in a team."""
     count = 0
     for index, player in enumerate(players):
         if player['team'] == team:
@@ -30,6 +34,7 @@ def count_team_players(players, team):
 
 
 def cal_total_experience(players, team):
+    """Counts total experience players in a team."""
     count = 0
     for index, player in enumerate(players):
         if player['team'] == team:
@@ -39,6 +44,7 @@ def cal_total_experience(players, team):
 
 
 def cal_total_inexperience(players, team):
+    """Counts total inexperience players in a team."""
     count = 0
     for index, player in enumerate(players):
         if player['team'] == team:
@@ -48,6 +54,7 @@ def cal_total_inexperience(players, team):
 
 
 def cal_average_height(players, team):
+    """Calculates average height for a team."""
     heights = []
     for index, player in enumerate(players):
         if player['team'] == team:
@@ -57,7 +64,9 @@ def cal_average_height(players, team):
 
 
 def clean_data(players):
-
+    """Reads the existing player data from the PLAYERS constants provided file
+    without changing the original data. Height is saved as an integer and
+    Experience is saved as a boolean value."""
     for index, player in enumerate(players):
         measurement, unit = player['height'].split(' ')
         player['height'] = int(measurement)
@@ -69,6 +78,9 @@ def clean_data(players):
 
 
 def balance_teams(players, teams):
+    """Balances players across teams by ensuring that there are the same amount
+    of total players on each team, that each team has the same number of
+    experience vs. inexperienced players."""
     num_players_team = len(players) / len(teams)
     team_assignment = teams * int(num_players_team)
     experience_list = []
@@ -97,6 +109,7 @@ def balance_teams(players, teams):
 
 
 def select_option():
+    """Provides user the option to Display Team Stats or Quit application."""
     print()
     print("BASKETBALL TEAM STATS TOOL \n")
     print("---- MENU ----\n")
@@ -124,6 +137,7 @@ def select_option():
 
 
 def select_team(teams):
+    """Displays the team options for user to select."""
     print()
     print("\t 1) Panthers")
     print("\t 2) Bandits")
@@ -142,6 +156,7 @@ def select_team(teams):
 
 
 def print_stats(players, teams, team_option):
+    """Prints team statistics for the selected team."""
     print()
     team = teams[team_option-1]
     print(f"Team: {teams[team_option-1]} Stats")
@@ -159,6 +174,7 @@ def print_stats(players, teams, team_option):
 
 
 def tool(teams, players):
+    """Tool to manage the application flow"""
     select_option()
     team_option = select_team(teams)
     print_stats(players, teams, team_option)
